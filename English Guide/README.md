@@ -32,12 +32,12 @@ and then:
 4. In TFTP tab, Enable TFTP Server and choose the 'root' folder as TFTP Server root directory. Don't change the other fields:
 <p align="center">
   <img width=40% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/5.png"></img>
-</p
+</p>
 
 5. In DHCP tab, enable proxyDHCP and BINL. Don't change other fields:
 <p align="center">
   <img width=40% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/6.png"></img>
-</p
+</p>
 
 6. Hit OK, close Serva and run it again, so that changes will take place.
 
@@ -51,3 +51,44 @@ https://www.vercot.com/~serva/download/INITRD_N11.2.4.GZ
 - for Ubuntu LTS 16.04 to before LTS 18.04, download this:
 https://www.vercot.com/~serva/download/INITRD_N11.2.2.GZ
 5. Place the downloaded file under the root/NWA_PXE/ubuntu/casper directory.
+
+## D) ServaAsset.inf Configuration
+1. Under root/NWA_PXE/ubuntu/ create a file named 'ServaAsset.inf' (.inf is the extension!).
+2. Open the file with a text editor and copy and paste the following lines into it:
+```
+[PXESERVA_MENU_ENTRY]
+asset    = $OS_NAME$
+platform = amd64
+ 
+kernel = /NWA_PXE/$HEAD_DIR$/casper/vmlinuz
+append = showmounts toram root=/dev/cifs initrd=/NWA_PXE/$HEAD_DIR$/casper/initrd.lz,/NWA_PXE/$HEAD_DIR$/casper/$INITRD$ boot=casper netboot=cifs nfsroot=//$IP_BSRV$/NWA_PXE_SHARE/$HEAD_DIR$ NFSOPTS=-ouser=$USERNAME$,pass=$PASSWORD$,sec=ntlm,vers=1.0,ro ip=dhcp ro ipv6.disable=1
+```
+3. Now you got to replace $$ values: (remove the $s too!)
+- $OS_NAME$ -> the OS name you want to see in boot menu.
+- $HEAD_DIR$ -> with the folder that you created in root/NWE_PXE (we named it 'ubuntu').
+- $INITRD$ -> `INITRD_N11.2.2.GZ` or `INITRD_N11.2.4.GZ` based on the file you downloaded.
+- $USERNAME$ and $PASSWORD$ -> the username and password that you've logged in into Windows.
+- $IP_BSRV$ -> IP of your system in the current network. (run 'ipconfig' in cmd and find your IP:)
+<p align="center">
+  <img width=80% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/7.png"></img>
+</p>
+
+4. Save the file and close it.
+5. Close Serva and run it again for 1-2 times, so that you only see these 2 lines:
+<p align="center">
+  <img width=60% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/8.png"></img>
+</p>
+
+## E) Sharing NWA_PXE:
+1. Right click on NWA_PXE folder and go to Properties.
+2. In Sharing tab, click on Advanced Sharing:
+<p align="center">
+  <img width=40% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/9.png"></img>
+</p>
+
+3. Enable Share this folder and use `NWA_PXE_SHARE` as Share name:
+<p align="center">
+  <img width=40% src="https://raw.githubusercontent.com/aut-icpc/pxe/master/images/10.png"></img>
+</p>
+
+4. Hit OK and you are Done!
