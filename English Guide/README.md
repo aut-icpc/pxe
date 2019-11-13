@@ -92,3 +92,16 @@ append = showmounts toram root=/dev/cifs initrd=/NWA_PXE/$HEAD_DIR$/casper/initr
 </p>
 
 4. Hit OK and you are Done!
+
+## Troubleshooting
+- Bad option -ouser:
+This is the most common error that you might get. So:
+1. Check if you've done part A)Prerequisites.
+2. Check if you've downloaded the right INITRD file and placed it in the corrent folder.
+3. Check if you've changed the extension of inird file to .lz
+4. Check if you've correctly entered IP, username and password in ServaAsset.inf.
+5. Check if the options after username and password (sec=ntlm,vers=1.0,ro) exist.
+5. Also, you can turn off Firewall.
+
+**If you're still getting this error or any other errors, please read documentations of Serva:
+https://www.vercot.com/~serva/default.html**
