@@ -6,4 +6,4 @@ distributions of Linux, please refer to the [Serva documentations](https://www.v
 
 
 
-<p dir="rtl">پسوند اون فایل اینف رو به زیپ تغییر بدید، نسخه کامل سروا داخل اونه!</p>
+<p dir="rtl">پسوند اون فایل دی ال ال رو به زیپ تغییر بدید، سروا داخل اونه!</p>
