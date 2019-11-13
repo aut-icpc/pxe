@@ -1,1 +1,0 @@
-# Farsi Guide for Serva
