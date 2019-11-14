@@ -1,4 +1,4 @@
-# PXE 
+# Contest's Server Guide 
 Use 'Remote Desktop Connection' to connect to contest's server.
 <br>
 The current config of the server:

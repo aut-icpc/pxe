@@ -1,4 +1,4 @@
-# English Guide for Serva
+# Serva Guide
 
 ## A) Prerequisites
 - Make sure SMBv1 is enabled (especially if you are running Serva in Windows 10).<br>
